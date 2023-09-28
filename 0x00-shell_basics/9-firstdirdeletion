@@ -1,3 +1,2 @@
 #!/bin/bash
     rm -r /tmp/my_first_directory
-    echo "Directory 'my_first_directory' has been deleted."
