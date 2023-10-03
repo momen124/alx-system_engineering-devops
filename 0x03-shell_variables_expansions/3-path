@@ -1,2 +1,3 @@
 #!/bin/bash
-$PATH | tr ":" "\n" | wc -lclient_loop: send disconnect: connection reset by peer
+$PATH | tr ":" "
+" | wc -lclient_loop: send disconnect: connection reset by peer
