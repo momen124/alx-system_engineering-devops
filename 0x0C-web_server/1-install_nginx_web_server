@@ -1,8 +1,29 @@
 #!/usr/bin/env bash
 # installs nginx server
 
-apt-get -y update
-apt-get -y install nginx
-ufw allow 'Nginx HTTP'
-echo 'Hello World!' > /var/www/html/index.nginx-debian.html
-service nginx start
+
+# Check if script is run as root
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root using sudo."
+  exit
+fi
+
+# Update package list
+apt-get update
+
+# Install nginx
+apt-get install -y nginx
+
+# Create directory if it doesn't exist
+mkdir -p /var/www/html/
+
+# Create a custom HTML file with "Hello World!"
+echo "<html><head><title>Hello World!</title></head><body><h1>Hello World!</h1></body></html>" | tee /var/www/html/index.html
+
+# Configure nginx to listen on port 80
+sed -i 's/# listen 80;/listen 80;/g' /etc/nginx/sites-available/default
+
+# Restart nginx without systemctl
+kill -s HUP $(cat /var/run/nginx.pid)
+
+echo "Nginx installed and configured successfully!"
