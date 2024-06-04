@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Function to count words in all hot posts of a given Reddit subreddit."""
+
 import requests
 
 
@@ -9,7 +10,7 @@ def count_words(subreddit, word_list, instances={}, after="", count=0):
     Args:
         subreddit (str): The subreddit to search.
         word_list (list): The list of words to search for in post titles.
-        instances (obj): Key/value pairs of words/counts.
+        instances (dict): Key/value pairs of words/counts.
         after (str): The parameter for the next page of the API results.
         count (int): The parameter of results matched thus far.
     """
@@ -53,3 +54,7 @@ def count_words(subreddit, word_list, instances={}, after="", count=0):
         [print("{}: {}".format(k, v)) for k, v in instances]
     else:
         count_words(subreddit, word_list, instances, after, count)
+
+
+if __name__ == "__main__":
+    count_words("python", ["word1", "word2"])

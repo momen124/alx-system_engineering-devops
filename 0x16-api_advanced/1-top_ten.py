@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Function to print hot posts on a given Reddit subreddit."""
+
 import requests
 
 
@@ -19,3 +20,7 @@ def top_ten(subreddit):
         return
     results = response.json().get("data")
     [print(c.get("data").get("title")) for c in results.get("children")]
+
+
+if __name__ == "__main__":
+    top_ten("python")
