@@ -36,3 +36,4 @@ def recurse(subreddit, hot_list=[], after="", count=0):
 
 if __name__ == "__main__":
     print(recurse("python"))
+

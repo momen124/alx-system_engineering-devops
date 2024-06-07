@@ -32,3 +32,4 @@ def top_ten(subreddit):
 if __name__ == "__main__":
     top_ten("python")  # Test with a valid subreddit
     top_ten("thissubredditdoesnotexist")  # Test with an invalid subreddit
+
